@@ -1,0 +1,153 @@
+
+
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+<head>
+  
+  <meta charset="utf-8" >
+  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+  <title>シフト表</title>
+
+</head>
+
+<body>
+  <div id="text_button">
+      <p id="text1">Yes</p>
+  </div>
+  <div id="text-button">
+      <p id="text">クリック</p>
+  </div>
+
+  <script type="text/javascript">
+    document.getElementById("text_button").onclick = function() {
+        document.getElementById("text1").innerHTML = "NO";
+    };
+    document.getElementById("text-button").onclick = function() {
+        document.getElementById("text").innerHTML = "クリックされた！";
+    };
+</script>
+
+  <h2>2022 10月 シフト表</h2>
+  <h4 class="mt-5 mb-4 border-bottom">DB検索結果を表示</h4>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4">
+
+            <div id="tbl-bdr">
+              <p>下記を変更することでテーブルの表示数が変わります。<br>
+                <select id="list-num" onchange="change_table();">
+                  <option value="3" selected>3件</option>
+                  <option value="5">5件</option>
+                  <option value="30">10件</option>
+                </select>
+              </p>
+              <table id="list-table">
+                <tbody class="shift_data">
+                  <div class="head1">
+                  <tr>
+                    <th>日付</th>
+                    <th> 曜日</th>
+                    <th>業務1</th>
+                    <th>業務2</th>
+                    <th>予算/実績</th>
+                    <th>適正人員</th>
+                    <th>人員実績</th>
+                    <th>納品数</th>
+                    <th>SALE/EVENT</th>
+                    <th><input type="text" value="STAFF1"></input></th>
+                    <th>STAFF2</th>
+                    <th>STAFF3</th>
+                    <th>STAFF4</th>
+                    <th>STAFF5</th>
+                    <th>STAFF6</th>
+                    <th>STAFF7</th>
+                    <th>STAFF8</th>
+                    <th>STAFF9</th>
+                    <th>STAFF10</th>
+                  </tr>
+                  </div>
+                  <tr>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td>りんご</td>
+                    <td>1</td>
+                    <td><select onchange="myfunc(this.value)" class="shift_value">
+                      
+                      <option value="◯" sellected="myfunc.value_data">◯</option>
+                      <option value="△">△</option>
+                      <option value="×">×</option>
+
+                    </select></td>
+                  </tr>
+                 
+                  
+                </tbody>
+              </table>
+               
+              <script>
+              <!--
+                function change_table(){
+                  // 要素抜き出し
+                  var o_list_num_elm = document.getElementById('list-num');
+                  var o_list_table_elm = document.getElementById('list-table');
+                  
+                  // 表示数取得
+                  var i_list_num = parseInt(o_list_num_elm.value);
+                  // tableのtr要素を抜き出し
+                  var a_tr_items = o_list_table_elm.children[0].children;
+                  
+                  // 全てのtr要素に対して処理(※見出しの1行分に注意)
+                  for(i=0; i<a_tr_items.length; i++){
+                    if(i<(i_list_num+1)){
+                      a_tr_items[i].style.display = 'table-row';
+                    } else {
+                      a_tr_items[i].style.display = 'none';
+                    }
+                  }
+                  return true;
+                }
+                // 読み込み時にも発火
+                change_table();
+              //-->
+
+              document.getElementById("shift_value").onclick = function(){
+                document.getElementById("shift_value").innerHTML = "変更";
+              }
+
+              function myfunc(value) {
+
+                var value_data = input();
+
+              }
+
+
+
+             
+              </script>
+              </div>
+          
+
+            <p>sample1：{{result_sample1}}</p>
+            <p>sample2：{{result_sample2}}</p>
+          </div>
+        </div>
+      </div>
+    </body>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    
+    {% endblock %}
